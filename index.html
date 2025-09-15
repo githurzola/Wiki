@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wiki: Sensores de Temperatura</title>
+  <meta name="description" content="Wiki sobre sensores de temperatura: principios, instrumentos, aplicaciones, guía de selección y tendencias." />
+
+  <!-- Tu CSS (mantiene la paleta y estructura) -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Librerías necesarias (IMPORTANTE: deben cargarse antes de script.js) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  
+
+  <!-- Tu JavaScript (defer para ejecutarse cuando DOM esté listo) -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <header class="header__principal">
+      <div class="logo">🌡</div>
+      <div>
+        <h1>Wiki: Sensores de Temperatura</h1>
+      </div>
+      <div style="margin-left:auto" class="controls">
+        <button id="downloadBtn" title="Descargar resumen en PDF">Descargar PDF</button>
+      </div>
+    </header>
+
+    <main>
+      <nav class="side" aria-label="Navegación principal">
+        <div class="search">
+          <input id="searchInput" type="search" placeholder="Buscar sección..." aria-label="Buscar sección" />
+        </div>
+        <ul id="toc">
+          <li><a href="#intro" class="active">Introducción</a></li>
+          <li><a href="#instrumentos">Instrumentos</a></li>
+          <li><a href="#aplicaciones">Aplicaciones industriales</a></li>
+          <li><a href="#tendencias">Tendencias actuales</a></li>
+          <li><a href="#video">Video</a></li>
+          <li><a href="#referencias">Referencias</a></li>
+        </ul>
+      </nav>
+
+      <section class="content" id="content">
+
+        <!-- Introducción -->
+        <article id="intro" class="card">
+          <h2>Introducción</h2>
+          <p>La temperatura es una magnitud física que expresa el grado de energía térmica de un cuerpo y determina el sentido del flujo de calor. Su correcta medición es fundamental en <strong>industria, investigación científica, medicina, energía, alimentación y electrónica</strong>.</p>
+          <p>La historia de la medición comienza con <strong>Galileo Galilei</strong> y sus primeros termoscopios (siglo XVII), evolucionando hasta los modernos <strong>sensores digitales inteligentes</strong> actuales.</p>
+          <p>Los instrumentos de medida se basan en diferentes fenómenos físicos:</p>
+          <ul>
+            <li>Dilatación de sólidos, líquidos y gases.</li>
+            <li>Variación de resistencia en metales y semiconductores.</li>
+            <li>Generación de f.e.m. en uniones metálicas (<em>efecto Seebeck</em>).</li>
+            <li>Radiación emitida por los cuerpos (<em>ley de Stefan–Boltzmann</em>).</li>
+          </ul>
+        </article>
+
+        <!-- Instrumentos -->
+        <article id="instrumentos" class="card">
+          <h2>Instrumentos de medición de temperatura</h2>
+
+          <details open><summary><strong>Termómetro de vidrio</strong></summary>
+            <ul>
+              <li>Principio: dilatación de un líquido en bulbo y ascenso en capilar.</li>
+              <li>Fluidos: mercurio, alcohol, tolueno, pentano.</li>
+              <li>Rangos: Mercurio (-35 °C a +280 °C), con gas inerte (+450 °C), Alcohol (-110 °C a +550 °C), Pentano (-200 °C a +200 °C), Tolueno (-70 °C a +100 °C).</li>
+              <li>Construcción: bulbo sellado y columna capilar graduada.</li>
+              <li>Aplicaciones: laboratorios, meteorología.</li>
+              <li>Ventajas: económicos, sin energía eléctrica.</li>
+              <li>Limitaciones: frágiles, lectura manual.</li>
+              <img src="/Multimedia/termometrovidrio.png" alt="">
+            </ul>
+          </details>
+
+          <details><summary><strong>Termómetro bimetálico</strong></summary>
+            <ul>
+              <li>Principio: dos metales con diferente dilatación se curvan.</li>
+              <li>Construcción: espiral o hélice conectada a aguja.</li>
+              <li>Rango: -200 °C a +500 °C.</li>
+              <li>Precisión: ±1 %.</li>
+              <li>Aplicaciones: hornos, calderas, HVAC.</li>
+              <li>Ventajas: robustos, económicos.</li>
+              <li>Limitaciones: menor exactitud que RTD.</li>
+              <img src="/Multimedia/bimetalico.png" alt="">
+            </ul>
+          </details>
+
+          <details><summary><strong>Termómetros de bulbo y capilar</strong></summary>
+            <ul>
+              <li>Principio: dilatación de fluido en bulbo conectado a capilar e indicador.</li>
+              <li>Tipos: líquido, vapor, gas, mercurio.</li>
+              <li>Rango: -75 °C a +300 °C.</li>
+              <li>Precisión: 1–2 %.</li>
+              <li>Aplicaciones: refrigeración, hornos, medición remota.</li>
+              <li>Ventajas: medición a distancia.</li>
+              <li>Desventajas: grandes, respuesta lenta.</li>
+              <img src="/Multimedia/bulbo.png" alt="">
+            </ul>
+          </details>
+
+          <details><summary><strong>Termómetros de resistencia (RTD)</strong></summary>
+            <ul>
+              <li>Principio: resistencia de un conductor varía con la temperatura. Rₜ = R₀ (1 + αt)</li>
+              <li>Material: platino (Pt100, Pt1000).</li>
+              <li>Rango: -200 °C a +850 °C.</li>
+              <li>Precisión: ±0,1 °C.</li>
+              <li>Aplicaciones: procesos industriales de precisión.</li>
+              <li>Ventajas: estabilidad, linealidad.</li>
+              <li>Limitaciones: costosos, frágiles.</li>
+              <img src="/Multimedia/rtd.png" alt="">
+            </ul>
+          </details>
+
+          <details><summary><strong>Termistores</strong></summary>
+            <ul>
+              <li>Principio: resistencia semiconductora sensible a la temperatura.</li>
+              <li>Tipos: NTC (resistencia ↓ con T ↑), PTC (resistencia ↑ con T ↑).</li>
+              <li>Rango: -55 °C a +150 °C.</li>
+              <li>Aplicaciones: electrónica, automóviles, climatización.</li>
+              <li>Ventajas: alta sensibilidad, económicos.</li>
+              <li>Desventajas: rango limitado, no lineales.</li>
+              <img src="/Multimedia/termistor.png" alt="">
+            </ul>
+          </details>
+
+          <details><summary><strong>Sensores de semiconductor</strong></summary>
+            <ul>
+              <li>Principio: dispositivos integrados proporcionales a la temperatura.</li>
+              <li>Ejemplo: LM35 (10 mV/°C).</li>
+              <li>Rango: -55 °C a +150 °C.</li>
+              <li>Aplicaciones: computadoras, IoT, electrodomésticos.</li>
+              <li>Ventajas: compactos, fáciles de usar.</li>
+              <li>Desventajas: limitados a bajas temperaturas.</li>
+              <img src="/Multimedia/lm35.png" alt="">
+            </ul>
+          </details>
+
+          <details><summary><strong>Termopares</strong></summary>
+            <ul>
+              <li>Principio: efecto Seebeck → unión de metales genera f.e.m.</li>
+              <li>Tipos y rangos: J (-200 a 750 °C), K (-200 a 1250 °C), T (-200 a 350 °C), S/R (0 a 1600 °C), B (600 a 1700 °C).</li>
+              <li>Precisión: ±1 a ±2 °C.</li>
+              <li>Aplicaciones: hornos, turbinas, petroquímica.</li>
+              <li>Ventajas: gran rango, robustos, rápidos.</li>
+              <li>Desventajas: baja señal, requieren compensación de unión fría.</li>
+              <img src="/Multimedia/termopar.png" alt="">
+            </ul>
+          </details>
+        </article>
+
+        <!-- Aplicaciones -->
+        <article id="aplicaciones" class="card">
+          <h2>Aplicaciones industriales</h2>
+          <ul>
+            <li>Energía y petróleo: hornos de refinería, turbinas, reactores nucleares.</li>
+            <li>Alimentos y farmacéutica: esterilización, refrigeración, congelación, fermentación.</li>
+            <li>Automotriz: control de motores, climatización.</li>
+            <li>Medicina: incubadoras, quirófanos, diagnóstico.</li>
+            <li>Electrónica: protección térmica en fuentes, cargadores e IoT.</li>
+          </ul>
+        </article>
+
+        <!-- Tendencias -->
+        <article id="tendencias" class="card">
+          <h2>Tendencias actuales</h2>
+          <ul>
+            <li>Sensores inteligentes con autocalibración y comunicación digital.</li>
+            <li>IoT Industrial: monitoreo remoto en la nube.</li>
+            <li>Materiales avanzados: termopares hasta 2500 °C y RTD miniaturizados.</li>
+            <li>Sensores sin contacto: pirómetros y cámaras termográficas.</li>
+            <li>Integración con IA: corrección y predicción de fallas.</li>
+          </ul>
+        </article>
+
+        <!-- Video -->
+        <article id="video" class="card">
+          <h2>Video explicativo</h2>
+          <video src="/Multimedia/Video.mp4" controls muted width="100%"></video>
+        </article>
+
+        <!-- Referencias -->
+        <article id="referencias" class="card">
+          <h2>Referencias</h2>
+          <ul>
+            <li>Creus, A. <em>Instrumentación Industrial</em> (8ª edición), Capítulo 6.</li>
+          </ul>
+        </article>
+
+        <footer>
+          Hecho por Alejandro Urzola, Sebastian Herrera, Danilo Acevedo, Laura Bermudez, Tatiana Herrera, Marcos Benedetti.
+        </footer>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
