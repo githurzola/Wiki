@@ -107,3 +107,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll("article[id], section[id]").forEach(sec => observer.observe(sec));
 });
+
+window.addEventListener('DOMContentLoaded', () => {
+  const popup = document.getElementById('welcome-popup');
+  const closeBtn = document.getElementById('close-popup');
+  if (popup && closeBtn) {
+    closeBtn.onclick = () => {
+      popup.style.display = 'none';
+    };
+  }
+});
