@@ -1,0 +1,95 @@
+:root {
+  --bg:#0f1724;
+  --card:#0b1220;
+  --muted:#94a3b8;
+  --accent:#fff;
+  --radius:12px;
+  --maxw:1100px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:linear-gradient(#000,#000d);
+  color:#e6eef8;
+}
+
+.container { max-width:var(--maxw); margin:28px auto; padding:22px; }
+
+header {
+  display:flex;
+  gap:16px;
+  align-items:center;
+  margin-bottom:18px;
+}
+
+.logo {
+  width:60px; height:60px;
+  border-radius:12px;
+  background:linear-gradient(#fff, #ddd);
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; color:#022; font-size:28px;
+}
+
+h1 { font-size:22px; margin:0; }
+p.lead { color:var(--muted); margin:4px 0 0; }
+
+main { display:grid; grid-template-columns:280px 1fr; gap:18px; }
+
+nav.side {
+  background:linear-gradient(#000,#000a);
+  padding:14px;
+  border-radius:var(--radius);
+  height:calc(100vh - 140px);
+  position:sticky; top:20px; overflow:auto;
+}
+
+nav input[type='search'] {
+  width:100%; padding:8px; border-radius:8px;
+  border:1px solid rgba(255,255,255,0.1);
+  background:transparent; color:inherit;
+}
+
+nav ul { list-style:none; padding:0; margin:8px 0 0; }
+nav li { margin:6px 0; }
+nav a {
+  display:block; padding:8px; border-radius:8px;
+  text-decoration:none; color:var(--muted);
+  transition:background 0.2s, color 0.2s;
+}
+nav a.active, nav a:hover { background:rgba(255,255,255,0.05); color:var(--accent); }
+
+section.content { background:rgba(255,255,255,0.02); padding:18px; border-radius:var(--radius); }
+
+.card { background:rgba(255,255,255,0.02); padding:14px; border-radius:10px; margin-bottom:20px; }
+
+h2 { margin:0 0 8px; color:var(--accent); }
+
+button {
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.2);
+  padding:8px 10px;
+  border-radius:8px;
+  color:inherit;
+  cursor:pointer;
+  transition:all 0.2s;
+}
+button:hover {
+  background:rgba(255,255,255,0.05);
+}
+
+footer { color:var(--muted); font-size:13px; margin-top:10px; text-align:center; }
+
+@media (max-width:880px) {
+  main { grid-template-columns:1fr; }
+  nav.side { height:auto; position:relative; }
+}
+
+details { margin-bottom:10px; }
+details summary { cursor:pointer; color:var(--accent); }
+
+
+img{
+  width: 300px;
+}
