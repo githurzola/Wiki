@@ -117,3 +117,56 @@ window.addEventListener('DOMContentLoaded', () => {
     };
   }
 });
+
+window.addEventListener('DOMContentLoaded', () => {
+  const welcomePopup = document.getElementById('welcome-popup');
+  const closeWelcomeBtn = document.getElementById('close-popup');
+  const videoPopup = document.getElementById('video-popup');
+  const closeVideoBtn = document.getElementById('close-video-popup');
+
+  // Mostrar pop-up de bienvenida al cargar
+  if (welcomePopup && closeWelcomeBtn) {
+    closeWelcomeBtn.onclick = () => {
+      welcomePopup.style.display = 'none';
+      // Mostrar pop-up de video grupal después de cerrar el de bienvenida
+      if (videoPopup) videoPopup.style.display = 'flex';
+    };
+  }
+
+  // Cerrar pop-up de video grupal
+  if (videoPopup && closeVideoBtn) {
+    closeVideoBtn.onclick = () => {
+      videoPopup.style.display = 'none';
+    };
+  }
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  // Pop-up bienvenida
+  const welcomePopup = document.getElementById('welcome-popup');
+  const closeWelcomeBtn = document.getElementById('close-popup');
+  if (welcomePopup && closeWelcomeBtn) {
+    closeWelcomeBtn.onclick = () => {
+      welcomePopup.style.display = 'none';
+    };
+  }
+
+  // Mini reproductor flotante
+  const floatingVideo = document.getElementById('floating-video');
+  const toggleSizeBtn = document.getElementById('toggle-size');
+  const closeFloatingBtn = document.getElementById('close-floating-video');
+  const groupVideo = document.getElementById('group-video');
+
+  if (toggleSizeBtn && floatingVideo) {
+    toggleSizeBtn.onclick = () => {
+      floatingVideo.classList.toggle('expanded');
+      floatingVideo.classList.toggle('minimized');
+    };
+  }
+  if (closeFloatingBtn && floatingVideo) {
+    closeFloatingBtn.onclick = () => {
+      floatingVideo.style.display = 'none';
+      groupVideo.pause();
+    };
+  }
+});
