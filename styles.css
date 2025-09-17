@@ -40,8 +40,28 @@ body {
   80% { transform: scale(1.1);}
   100% { transform: scale(1); opacity: 1;}
 }
+
 .logo {
-  animation: logoPop 0.8s cubic-bezier(.68,-0.55,.27,1.55);
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  background: linear-gradient(#fff, #ddd);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #022;
+  font-size: 28px;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.12);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+@media (max-width: 600px) {
+  .logo {
+    width: 44px;
+    height: 44px;
+    font-size: 22px;
+    border-radius: 8px;
+  }
 }
 
 .container { max-width:var(--maxw); margin:28px auto; padding:22px; }
@@ -53,15 +73,6 @@ header {
   margin-bottom:18px;
 }
 
-.logo {
-  width:60px; height:60px;
-  border-radius:12px;
-  background:linear-gradient(#fff, #ddd);
-  display:flex; align-items:center; justify-content:center;
-  font-weight:700; color:#022; font-size:28px;
-  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.12);
-  transition: box-shadow 0.3s, transform 0.3s;
-}
 .logo:hover {
   box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18);
   border-color: #fff;
@@ -213,7 +224,6 @@ img:hover {
 }
 
 /* Mini reproductor flotante de video grupal */
-
 .floating-video {
   position: fixed;
   bottom: 24px;
@@ -245,18 +255,19 @@ img:hover {
   left: auto;
   top: auto;
   transform: none;
-  background-color: #000;
 }
 
 .floating-video.expanded {
-  width: 848px;
-  height: 480px;
+  width: 90vw;
+  height: 50vw;
   left: 50%;
   top: 50%;
   bottom: auto;
   right: auto;
   transform: translate(-50%, -50%);
   box-shadow: 0 8px 48px 0 rgba(0,0,0,0.28);
+  max-width: 848px;
+  max-height: 480px;
 }
 
 .floating-header {
@@ -267,6 +278,8 @@ img:hover {
   padding: 6px 12px;
   font-size: 15px;
   font-weight: 600;
+  z-index: 2;
+  position: relative;
 }
 
 .floating-header button {
@@ -277,6 +290,8 @@ img:hover {
   cursor: pointer;
   margin-left: 8px;
   transition: color 0.2s;
+  z-index: 3;
+  position: relative;
 }
 .floating-header button:hover {
   color: #94a3b8;
@@ -284,7 +299,7 @@ img:hover {
 
 #group-video {
   width: 100%;
-  height: calc(100% - 36px); /* Ajusta para dejar espacio al header */
+  height: calc(100% - 36px); /* Deja espacio para el header */
   background: #000;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
@@ -292,6 +307,44 @@ img:hover {
   display: block;
 }
 
-.click-aqui{
-  margin: 0
-}
+/* Responsive para el reproductor flotante en móvil */
+@media (max-width: 600px) {
+  .floating-video.expanded {
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    transform: none;
+    border-radius: 0;
+    max-width: 100vw;
+    max-height: 100vh;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+  }
+  .floating-video.minimized {
+    width: 90vw;
+    height: 38px;
+    bottom: 12px;
+    right: 5vw;
+    left: auto;
+    top: auto;
+    border-radius: 8px;
+    transform: none;
+    max-width: 95vw;
+    min-width: 0;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,0.12);
+    display: flex;
+    flex-direction: column;
+  }
+  .floating-header {
+    height: 40px;
+    padding: 0 8px;
+    font-size: 15px;
+  }
+  #group-video {
+    height: 100vh;
+    margin-top: 0;
+    border-radius: 0 0 8px 8px;
+  }
+ }
